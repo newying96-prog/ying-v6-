@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#8b2830">
+  <title>Ying — Version 6</title>
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main class="app">
+  <header>
+    <div><p class="eyebrow">LEARNING COMPANION · VERSION 6</p><h1>Ying</h1></div>
+    <div class="header-right"><span id="brainStatus" class="pill">Offline brain</span><span id="listenStatus" class="pill">Mic off</span></div>
+  </header>
+
+  <section class="hero">
+    <img src="assets/ying-avatar.png" alt="Ying, using the original pony artwork supplied by her creator">
+    <div class="hero-copy">
+      <h2 id="mood">Curious</h2>
+      <p id="thought">I'm ready to explore and learn.</p>
+      <p class="small">Her artwork is carried over unchanged from your V5 project.</p>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-heading"><h2>Conversation</h2><span class="small" id="connection">Local mode is ready</span></div>
+    <div id="chat" class="chat" aria-live="polite">
+      <p class="ying-msg"><b>Ying:</b> Hi! I can use my local starter brain without internet. If you connect an online brain, I can use it too. My saved memories stay on this device.</p>
+    </div>
+    <form id="chatForm">
+      <label for="message">Talk to Ying</label>
+      <textarea id="message" rows="3" placeholder="Type a message…"></textarea>
+      <div class="button-row">
+        <button type="submit">Send</button>
+        <button type="button" class="secondary" id="listenBtn">Listen once</button>
+        <button type="button" class="secondary" id="stopBtn">Stop voice</button>
+      </div>
+    </form>
+  </section>
+
+  <section class="panel">
+    <h2>Teach Ying</h2>
+    <p class="small">Start with <code>Remember:</code> to save a lesson. Nothing is saved unless you ask her to remember it.</p>
+    <div class="button-row">
+      <button id="memoryBtn" class="secondary" type="button">View memories</button>
+      <button id="exportBtn" class="secondary" type="button">Export memories</button>
+      <button id="importBtn" class="secondary" type="button">Import memories</button>
+      <button id="clearBtn" class="danger" type="button">Clear memories</button>
+      <input id="importFile" type="file" accept="application/json" hidden>
+    </div>
+    <p id="memoryCount" class="small">0 saved memories on this device.</p>
+    <div id="memoryList" class="memory-list" hidden></div>
+  </section>
+
+  <section class="panel">
+    <h2>Brain settings</h2>
+    <label class="check"><input id="onlineEnabled" type="checkbox"> Allow online brain when configured</label>
+    <label for="endpoint">Your secure backend address</label>
+    <input id="endpoint" type="url" placeholder="https://your-worker.example.workers.dev/chat" autocomplete="url">
+    <label class="check"><input id="shareMemory" type="checkbox"> Allow selected saved memories to be sent with online requests</label>
+    <p class="small">Memory sharing is OFF by default. Your online provider receives the messages you send when online mode is enabled. Do not enter an API key here.</p>
+    <button type="button" id="saveSettings" class="secondary">Save brain settings</button>
+    <p id="settingsMessage" class="small" role="status"></p>
+  </section>
+
+  <section class="panel">
+    <h2>Ying's boundaries</h2>
+    <ul class="small">
+      <li>Microphone listening is started by you and is visible on screen.</li>
+      <li>Listening stops after one spoken turn or when you press Stop.</li>
+      <li>She can disagree or say she doesn't want to continue a topic.</li>
+      <li>She asks before sharing saved memories or taking phone actions.</li>
+      <li>Her moods are simulated character states, not proof of consciousness.</li>
+    </ul>
+  </section>
+  <footer>Ying V6 · Local-first prototype · Keep this app open for voice input</footer>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
